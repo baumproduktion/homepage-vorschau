@@ -15,7 +15,6 @@ const DEMOS = [
   { title: "Sky True Crime",          meta: "Voice-Over",             file: "audio/sky-crime-voice-over.mp3",            tags: ["Trailer & Voice-Over"] },
   { title: "Opti-Wohnwelt",           meta: "Werbung · Gesang & Off", file: "audio/opti-wohnwelt-gesang-off.mp3",        tags: ["Werbung", "Gesang"] },
   { title: "Heizungsbau Gottlöber",   meta: "Werbung · Stellenanzeige", file: "audio/heizungsbau-gottloeber-stellenanzeige.mp3", tags: ["Werbung"] },
-  { title: "O2",                     meta: "Werbung",                file: "audio/o2-werbung.mp3",                      tags: ["Werbung"] },
   { title: "Hochschulinfotag",        meta: "Werbung",                file: "audio/hochschulinfotag-werbung.mp3",        tags: ["Werbung"] },
   { title: "Klimahaus Bremerhaven",   meta: "Recruiting-Kampagne",    file: "audio/klimahaus-bremerhaven-recruiting.mp3", tags: ["Werbung"] },
   { title: "Aktion Mensch",           meta: "Online-Ad",              file: "audio/aktion-mensch-online-ad.mp3",         tags: ["Werbung"] },
