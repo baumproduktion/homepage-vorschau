@@ -19,7 +19,7 @@
   --line: rgba(255, 255, 255, .11);
   --line-dark: rgba(255, 255, 255, .11);
 
-  --font-display: "Inter", "Segoe UI", system-ui, sans-serif; /* seit 10.11. wie das Logo (Inter Display ExtraBold) */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
 
   --radius: 18px;
@@ -470,8 +470,3 @@ em { font-style: normal; color: var(--accent); }
 /* Logo (Wortmarke) im Menü statt Text, seit 10.11. */
 .nav__logo img { display: block; height: 24px; width: auto; }
 @media (max-width: 600px) { .nav__logo img { height: 21px; } }
-/* Ueberschriften im Stil des Logos (Inter Display ExtraBold): kraeftig und eng gesetzt */
-h1, h2, h3 { font-weight: 800; letter-spacing: -.035em; }
-.hero h1, .contact h2, .legal h1 { letter-spacing: -.035em; } /* wie das Logo (Inter Display ExtraBold, ca. -0,035em) */
-.demo__title, .video__title, .music__intro .music__lead, .video-pro__text .video-pro__lead, .vo-intro__lead, .mfc-head__lead, .contact__quote p { letter-spacing: -.02em; }
-.marquee__track span { font-weight: 800; letter-spacing: -.03em; }
