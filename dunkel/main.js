@@ -118,6 +118,9 @@ function makePeaks(seed, n) {
   return peaks;
 }
 
+// Akzentfarbe aus der CSS-Variable --accent (damit die Wellenform jede Farbvariante mitmacht)
+const ACCENT = () => getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#FF6A2B";
+
 function drawWave(canvas, peaks, progress, dark = true) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -130,7 +133,7 @@ function drawWave(canvas, peaks, progress, dark = true) {
   for (let i = 0; i < count; i++) {
     const p = peaks[Math.floor((i / count) * peaks.length)];
     const bh = Math.max(2, p * h);
-    ctx.fillStyle = i / count < progress ? "#FF6A2B" : "rgba(241,239,234,.26)"; // dunkles Set-Licht-Design: immer helle Balken
+    ctx.fillStyle = i / count < progress ? ACCENT() : "rgba(241,239,234,.26)"; // Fortschritt in Akzentfarbe, Rest hell
     ctx.beginPath();
     ctx.roundRect ? ctx.roundRect(i * (bar + gap), (h - bh) / 2, bar, bh, 1.5) : ctx.rect(i * (bar + gap), (h - bh) / 2, bar, bh);
     ctx.fill();

@@ -9,7 +9,8 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css?v=4">
-<link rel="stylesheet" href="style.css?v=110">
+<link rel="stylesheet" href="style.css?v=111">
+<script>/* Farbvorschau: ?akzent=RRGGBB testet eine andere Akzentfarbe (ohne Zusatz bleibt alles wie es ist) */(function(){var m=location.search.match(/[?&]akzent=([0-9a-fA-F]{6})/);if(!m)return;var h=m[1],r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16),s=document.documentElement.style;s.setProperty("--accent","#"+h);s.setProperty("--accent-ink",(0.299*r+0.587*g+0.114*b)>165?"#111111":"#FFFFFF");})();</script>
 <link rel="icon" href="bilder/logo/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="bilder/logo/favicon-32.png">
 <link rel="apple-touch-icon" href="bilder/logo/apple-touch-icon.png">
@@ -258,6 +259,6 @@
   <div class="mini__bar"><span id="miniProg"></span></div>
 </div>
 
-<script src="main.js?v=99"></script>
+<script src="main.js?v=100"></script>
 </body>
 </html>
