@@ -42,6 +42,9 @@ const VOICEOVER_VIDEOS = [
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
   { title: "National Geographic",    meta: "Secrets of the Bees · Trailer · Voice-Over", youtube: "https://www.youtube.com/watch?v=Mej2usrRCl0",
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
+  // Eigenes Video: "file" statt "youtube", dazu "poster" und optional "duration"
+  { title: "LMU München",            meta: "Biologische Fakultät · Imagefilm · Voice-Over", file: "video/lmu-biologische-fakultaet.mp4",
+    poster: "bilder/videos/lmu-biologische-fakultaet.jpg", duration: "2:46" },
 ];
 
 // Music for Commercials: Spots, für die Tobias die Musik gemacht hat
@@ -275,17 +278,20 @@ function renderVideos(target, videos, opts = {}) {
   const grid = document.getElementById(target);
   videos.forEach((v, i) => {
     const id = youtubeId(v.youtube);
+    const file = v.file; // eigenes Video (MP4 im Ordner "video"), wird erst beim Klick geladen
+    const playable = Boolean(id || file);
     // Standbild: eigenes "poster" oder automatisch bilder/videos/<YouTube-ID>.jpg (lokal, kein YouTube-Aufruf vor dem Klick)
     const poster = v.poster || (id ? `bilder/videos/${id}.jpg` : "");
+    const hint = file ? (v.duration ? `Video · ${v.duration}` : "Video abspielen") : id ? "Klick lädt das Video von YouTube" : "YouTube-Link folgt";
     const fig = document.createElement("figure");
     fig.className = "video";
     fig.innerHTML = `
       <div class="video__frame">
-        <button class="video__poster" ${id ? `aria-label="Video ${v.title} abspielen"` : "disabled aria-label='Video folgt'"}>
+        <button class="video__poster" ${playable ? `aria-label="Video ${v.title} abspielen"` : "disabled aria-label='Video folgt'"}>
           ${poster ? `<img src="${poster}" alt="" loading="lazy" onerror="this.remove()">` : ""}
           ${opts.music ? `<span class="music-badge">${ICON_NOTE}Musik: Tobias Baum</span>` : ""}
-          ${id && !opts.noPlay ? `<span class="play">${ICON_PLAY}</span>` : ""}
-          <span class="hint">${id ? "Klick lädt das Video von YouTube" : "YouTube-Link folgt"}</span>
+          ${(file || (id && !opts.noPlay)) ? `<span class="play">${ICON_PLAY}</span>` : ""}
+          <span class="hint">${hint}</span>
         </button>
       </div>
       <figcaption>
@@ -294,7 +300,17 @@ function renderVideos(target, videos, opts = {}) {
         <div class="video__meta">${v.meta}</div>
         ${v.note ? `<div class="video__note">${v.note}</div>` : ""}
       </figcaption>`;
-    if (id) {
+    if (file) {
+      $(".video__poster", fig).addEventListener("click", (e) => {
+        audio.pause();
+        const vid = document.createElement("video");
+        vid.src = file; vid.controls = true; vid.autoplay = true; vid.playsInline = true;
+        if (poster) vid.poster = poster;
+        vid.setAttribute("aria-label", v.title);
+        e.currentTarget.replaceWith(vid);
+        vid.play().catch(() => {});
+      });
+    } else if (id) {
       $(".video__poster", fig).addEventListener("click", (e) => {
         audio.pause();
         const iframe = document.createElement("iframe");
