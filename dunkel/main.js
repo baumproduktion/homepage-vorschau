@@ -35,16 +35,17 @@ const VIDEOS = [
 ];
 
 // Voice-Over: Dokus & Reportagen (eigene Rubrik unter "Spots mit meiner Stimme")
+// Das erste Video wird groß hervorgehoben (Video breit, Titel daneben). Optional "label": kleine orange Zeile über dem Titel.
 const VOICEOVER_VIDEOS = [
+  // Eigenes Video: "file" statt "youtube", dazu "poster" und optional "duration"
+  { title: "LMU München",            meta: "Biologische Fakultät · Imagefilm", file: "video/lmu-biologische-fakultaet.mp4",
+    poster: "bilder/videos/lmu-biologische-fakultaet.jpg", duration: "2:46", label: "Voice-Over · Imagefilm 2025" },
   { title: "National Geographic",    meta: "Wolves Up Close · Trailer · Voice-Over", youtube: "https://www.youtube.com/watch?v=3hCMUaREGL8",
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
   { title: "National Geographic",    meta: "Dolphins Up Close · Doku · Voice-Over", youtube: "https://www.youtube.com/watch?v=c-1HF1LiY6o",
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
   { title: "National Geographic",    meta: "Secrets of the Bees · Trailer · Voice-Over", youtube: "https://www.youtube.com/watch?v=Mej2usrRCl0",
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
-  // Eigenes Video: "file" statt "youtube", dazu "poster" und optional "duration"
-  { title: "LMU München",            meta: "Biologische Fakultät · Imagefilm · Voice-Over", file: "video/lmu-biologische-fakultaet.mp4",
-    poster: "bilder/videos/lmu-biologische-fakultaet.jpg", duration: "2:46" },
 ];
 
 // Music for Commercials: Spots, für die Tobias die Musik gemacht hat
@@ -295,7 +296,7 @@ function renderVideos(target, videos, opts = {}) {
         </button>
       </div>
       <figcaption>
-        ${opts.music ? `<div class="video__track">Track ${String(i + 1).padStart(2, "0")}</div>` : ""}
+        ${opts.music ? `<div class="video__track">Track ${String(i + 1).padStart(2, "0")}</div>` : v.label ? `<div class="video__track">${v.label}</div>` : ""}
         <div class="video__title">${v.title}</div>
         <div class="video__meta">${v.meta}</div>
         ${v.note ? `<div class="video__note">${v.note}</div>` : ""}
@@ -335,6 +336,7 @@ function renderVideos(target, videos, opts = {}) {
 }
 renderVideos("videoGrid", VIDEOS, { compact: true });
 renderVideos("voiceoverGrid", VOICEOVER_VIDEOS, { noPlay: true });
+document.querySelector("#voiceoverGrid > .video")?.classList.add("video--featured"); // erstes Video groß
 renderVideos("commercialGrid", COMMERCIAL_VIDEOS, { music: true });
 
 // Laufender Timecode (25 Bilder/Sek.) in der Rubrik Videoproduktion – rein dekorativ
