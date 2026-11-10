@@ -448,3 +448,5 @@ em { font-style: normal; color: var(--accent); }
 /* Spots-Block in den Hörproben (eigene Klasse, damit das kompakte 6er-Raster greift) */
 .spots { margin-top: clamp(56px, 7vw, 88px); }
 .spots .subsection__head h3 { font-size: clamp(28px, 3vw, 38px); }
+/* Eigenes Video im Reel-Rahmen */
+.reel .video__frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; background: #000; }

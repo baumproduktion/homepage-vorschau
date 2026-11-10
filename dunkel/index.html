@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=103">
+<link rel="stylesheet" href="style.css?v=104">
 </head>
 <body>
 
@@ -152,17 +152,17 @@
         <p class="video-pro__lead">Heute vereint Tobias all diese Facetten in seiner Selbstständigkeit und bringt Geschichten nicht mehr nur zum Klingen, sondern auch visuell auf den Punkt.</p>
         <p>Ob vor oder hinter der Kamera: Als erfahrener <strong>Schauspieler</strong> und <strong>Videoproduzent</strong> konzipiert und realisiert er packenden Video-Content, unter anderem im <strong>Social-Media-Bereich</strong> für verschiedenste Unternehmen. Mit jahrelanger Erfahrung und einem feinen Gespür für die Anliegen seiner Kunden arbeitet er dabei Hand in Hand mit einem eingespielten Netzwerk aus Freelancern – darunter <a href="https://frickefilm.de" target="_blank" rel="noopener">Frickefilm</a> und <a href="https://einfachzack.de" target="_blank" rel="noopener">Einfach Zack</a>.</p>
       </div>
-        <!-- Instagram-Reel: nur Link + lokales Standbild, nichts wird von Instagram geladen, bevor jemand klickt -->
+        <!-- Einfach-Zack-Clip als eigene MP4 (seit 10.11. statt Instagram-Link); wird erst beim Klick geladen -->
         <figure class="video reel">
           <div class="video__frame">
-            <a class="video__poster" href="https://www.instagram.com/reel/C8otmmvt7-N/" target="_blank" rel="noopener" aria-label="Video „Videos steigern deinen Umsatz“ auf Instagram ansehen">
+            <button class="video__poster" type="button" data-local-video="video/einfachzack-umsatz-steigern.mp4" aria-label="Video „Videos steigern deinen Umsatz“ abspielen">
               <img src="bilder/videos/instagram-C8otmmvt7-N.jpg" alt="" width="360" height="640" loading="lazy">
               <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span>
               <span class="rec rec--overlay" aria-hidden="true"><i></i>REC</span>
               <span class="cam cam--tr" aria-hidden="true">4K · 25p <i class="cam__bat"></i></span>
               <span class="cam cam--bl" aria-hidden="true">ISO 800 · f/2.8 · 1/50</span>
-              <span class="hint">Klick öffnet Instagram</span>
-            </a>
+              <span class="hint">0:33</span>
+            </button>
           </div>
           <figcaption>
             <div class="video__title">Videos steigern deinen Umsatz</div>
@@ -178,7 +178,6 @@
       <figure><img src="bilder/dreh/set-interview.jpg" alt="Interview-Aufbau mit Licht, Mikrofon und Kamera im Flur" width="933" height="1400" loading="lazy"></figure>
       <figure><img src="bilder/dreh/set-zwei-kameras.jpg" alt="Tobias Baum im Studio zwischen zwei Kameras" width="933" height="1400" loading="lazy"></figure>
     </div>
-    <p class="set-strip__caption">Am Set mit dem Team von <a href="https://frickefilm.de" target="_blank" rel="noopener">Frickefilm</a></p>
    </div>
   </section>
 
@@ -256,6 +255,6 @@
   <div class="mini__bar"><span id="miniProg"></span></div>
 </div>
 
-<script src="main.js?v=96"></script>
+<script src="main.js?v=97"></script>
 </body>
 </html>

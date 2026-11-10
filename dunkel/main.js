@@ -341,3 +341,17 @@ if (mfcWave) {
   window.addEventListener("resize", paintMfc);
 }
 renderVideos("bandGrid", BAND_VIDEOS);
+
+// Eigene Videos (z. B. Einfach-Zack-Clip): Standbild-Knopf wird beim Klick durch den Video-Player ersetzt
+document.querySelectorAll("[data-local-video]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const v = document.createElement("video");
+    v.src = btn.dataset.localVideo;
+    v.controls = true; v.autoplay = true; v.playsInline = true;
+    v.poster = btn.querySelector("img")?.src || "";
+    v.setAttribute("aria-label", btn.getAttribute("aria-label").replace(/ abspielen$/, ""));
+    audio.pause(); // laufende Hörprobe stoppen
+    btn.replaceWith(v);
+    v.play().catch(() => {});
+  });
+});
