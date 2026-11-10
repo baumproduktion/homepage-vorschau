@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tobias Baum – Farbtest</title>
+<link rel="stylesheet" href="dunkel/fonts/fonts.css?v=4">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; background: #080B12; color: #F1EFEA; font: 15px/1.5 Inter, system-ui, sans-serif; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-size: 20px; letter-spacing: -.02em; margin-right: 6px; }
+  .sw { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sw button { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px 5px 6px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: transparent; color: #C9CDD6; font: inherit; font-size: 13px; cursor: pointer; }
+  .sw button i { width: 16px; height: 16px; border-radius: 50%; }
+  .sw button:hover, .sw button[aria-pressed="true"] { border-color: #fff; color: #fff; background: rgba(255,255,255,.08); }
+  label.pick { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #C9CDD6; }
+  input[type=color] { width: 38px; height: 30px; border: 0; padding: 0; background: none; cursor: pointer; }
+  .code { font: 600 13px ui-monospace, Consolas, monospace; color: #fff; }
+  iframe { flex: 1; width: 100%; border: 0; background: #080B12; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Farbtest</h1>
+  <div class="sw" id="sw"></div>
+  <label class="pick">Eigene Farbe: <input type="color" id="pick" value="#ff6a2b"> <span class="code" id="code">#FF6A2B</span></label>
+</header>
+<iframe id="page" title="Homepage in der gewählten Farbe" src="dunkel/"></iframe>
+<script>
+  const COLORS = [
+    ["Orange (jetzt)", "FF6A2B"], ["Signalrot", "FF3B47"], ["Gold", "F5B83D"], ["Bernstein", "FFA41B"], ["Kupfer", "D9894A"],
+    ["Champagner", "E8D3A2"], ["Koralle", "FF7A6B"], ["Himbeere", "E8336E"], ["Magenta", "FF4D9D"], ["Violett", "9B7BFF"],
+    ["Royalblau", "4D7CFF"], ["Cyan", "22D3EE"], ["Türkis", "14B8A6"], ["Neon-Lime", "C8F542"], ["Weiß", "F1EFEA"]
+  ];
+  const sw = document.getElementById("sw"), page = document.getElementById("page"), pick = document.getElementById("pick"), code = document.getElementById("code");
+  function show(hex) {
+    hex = hex.replace("#", "").toUpperCase();
+    // Scrollposition beibehalten
+    let y = 0; try { y = page.contentWindow.scrollY; } catch (e) {}
+    page.src = "dunkel/?akzent=" + hex;
+    page.onload = () => { try { page.contentWindow.scrollTo(0, y); } catch (e) {} };
+    pick.value = "#" + hex.toLowerCase(); code.textContent = "#" + hex;
+    [...sw.children].forEach(b => b.setAttribute("aria-pressed", b.dataset.hex === hex));
+    history.replaceState(null, "", "?akzent=" + hex);
+  }
+  COLORS.forEach(([name, hex]) => {
+    const b = document.createElement("button"); b.type = "button"; b.dataset.hex = hex;
+    b.innerHTML = `<i style="background:#${hex}"></i>${name}`; b.onclick = () => show(hex); sw.appendChild(b);
+  });
+  pick.addEventListener("change", () => show(pick.value));
+  const start = (location.search.match(/akzent=([0-9a-fA-F]{6})/) || [])[1] || "FF6A2B";
+  show(start);
+</script>
+</body>
+</html>
