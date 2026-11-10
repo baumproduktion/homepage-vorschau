@@ -467,3 +467,6 @@ em { font-style: normal; color: var(--accent); }
   .video--featured { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) { #voiceoverGrid { grid-template-columns: 1fr; } }
+/* Logo (Wortmarke) im Menü statt Text, seit 10.11. */
+.nav__logo img { display: block; height: 24px; width: auto; }
+@media (max-width: 600px) { .nav__logo img { height: 21px; } }
