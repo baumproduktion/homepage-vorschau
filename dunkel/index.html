@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=102">
+<link rel="stylesheet" href="style.css?v=103">
 </head>
 <body>
 
@@ -21,7 +21,6 @@
     </button>
     <nav id="menu" class="nav__menu">
       <a href="#hoerproben">Hörproben</a>
-      <a href="#videos">Videos</a>
       <a href="#musik">Musik</a>
       <a href="#videoproduktion">Videoproduktion</a>
       <a href="#leistungen">Leistungen</a>
@@ -75,33 +74,30 @@
         <div class="chips" role="tablist" aria-label="Hörproben filtern" id="demoFilter"></div>
       </div>
       <ol class="demo-list" id="demoList"></ol>
-    </div>
-  </section>
 
-  <!-- VIDEOS -->
-  <section class="videos wrap" id="videos">
-    <div class="section-head">
-      <div>
-        <p class="kicker">02 — Videos</p>
-        <h2>Spots mit meiner Stimme.</h2>
+      <!-- Spots und Dokus gehören seit 10.11. zu den Hörproben (eigene Rubrik „Videos“ entfallen) -->
+      <div class="spots" id="spots">
+        <div class="subsection__head">
+          <h3>Spots mit meiner Stimme</h3>
+          <p>Videos werden erst nach deinem Klick von YouTube geladen.</p>
+        </div>
+        <div class="video-grid" id="videoGrid"></div>
       </div>
-      <p class="section-note">Videos werden erst nach deinem Klick von YouTube geladen.</p>
-    </div>
-    <div class="video-grid" id="videoGrid"></div>
 
-    <div class="subsection">
-      <div class="vo-intro">
-        <h3>Dokus &amp; Voice-Over</h3>
-        <p class="vo-intro__lead">Neben klassischer Werbung leiht Tobias Baum seine Stimme auch zahlreichen <em>Dokumentationen</em>, <em>Reportagen</em>, <em>Magazinen</em> und <em>Reality-TV-Produktionen</em>.</p>
+      <div class="subsection">
+        <div class="vo-intro">
+          <h3>Dokus &amp; Voice-Over</h3>
+          <p class="vo-intro__lead">Neben klassischer Werbung leiht Tobias Baum seine Stimme auch zahlreichen <em>Dokumentationen</em>, <em>Reportagen</em>, <em>Magazinen</em> und <em>Reality-TV-Produktionen</em>.</p>
+        </div>
+        <div class="video-grid" id="voiceoverGrid"></div>
       </div>
-      <div class="video-grid" id="voiceoverGrid"></div>
     </div>
   </section>
 
   <!-- MUSIK -->
   <section class="music" id="musik">
     <div class="wrap">
-      <p class="kicker">03 — Musik & Produktion</p>
+      <p class="kicker">02 — Musik & Produktion</p>
       <div class="music__intro">
         <div class="music__head">
           <h2>Vom Radiospot<br>bis auf die Weltbühne.</h2>
@@ -151,7 +147,7 @@
   <section class="video-pro" id="videoproduktion">
    <div class="wrap">
     <div class="film-bar">
-      <p class="kicker">04 — Videoproduktion</p>
+      <p class="kicker">03 — Videoproduktion</p>
       <p class="film-bar__rec" aria-hidden="true"><span class="rec"><i></i>REC</span><span class="timecode" id="timecode">00:00:00:00</span></p>
     </div>
     <div class="video-pro__inner">
@@ -193,7 +189,7 @@
 
   <!-- LEISTUNGEN -->
   <section class="services wrap" id="leistungen">
-    <p class="kicker">05 — Leistungen</p>
+    <p class="kicker">04 — Leistungen</p>
     <h2>Was ich für dich mache.</h2>
     <div class="services__grid">
       <article>

@@ -348,3 +348,12 @@ em { font-style: normal; color: var(--accent); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* Spots und Dokus stehen seit 10.11. im schwarzen Hörproben-Bereich: helle Schrift */
+.demos .subsection__head p { color: var(--muted-dark); }
+.demos .vo-intro { border-top-color: var(--line-dark); }
+.demos .vo-intro__lead { color: var(--paper); }
+.demos .video__meta { color: var(--muted-dark); }
+/* Spots-Block in den Hörproben (eigene Klasse, damit das kompakte 6er-Raster greift) */
+.spots { margin-top: clamp(56px, 7vw, 88px); }
+.spots .subsection__head h3 { font-size: clamp(28px, 3vw, 38px); }
