@@ -16,6 +16,7 @@ const DEMOS = [
   { title: "Sushi Bike (Radioproduktion)", meta: "Imagespot",              file: "audio/sushi-bike-image.mp3",                tags: ["Werbung"], gain: -5.7 },
   { title: "Laserland Dresden",       meta: "Imagespot",              file: "audio/laserland-dresden-image.mp3",         tags: ["Werbung"], gain: -5.9 },
   { title: "Sky True Crime",          meta: "Voice-Over",             file: "audio/sky-crime-voice-over.mp3",            tags: ["Trailer & Voice-Over"], gain: -1.4 },
+  { title: "LMU München",             meta: "Voice-Over · Biologische Fakultät", file: "audio/lmu-muenchen-voice-over.mp3",   tags: ["Trailer & Voice-Over"], gain: -1.7 },
   { title: "Opti-Wohnwelt",           meta: "Werbung · Gesang & Off", file: "audio/opti-wohnwelt-gesang-off.mp3",        tags: ["Werbung", "Gesang"], gain: -6.1 },
   { title: "Heizungsbau Gottlöber",   meta: "Werbung · Stellenanzeige", file: "audio/heizungsbau-gottloeber-stellenanzeige.mp3", tags: ["Werbung"], gain: -5.5 },
   { title: "Hochschulinfotag",        meta: "Werbung",                file: "audio/hochschulinfotag-werbung.mp3",        tags: ["Werbung"], gain: -6.8 },
