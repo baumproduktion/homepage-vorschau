@@ -42,7 +42,7 @@ const VIDEOS = [
 const VOICEOVER_VIDEOS = [
   // Eigenes Video: "file" statt "youtube", dazu "poster" und optional "duration"
   { title: "LMU München",            meta: "Biologische Fakultät", file: "video/lmu-biologische-fakultaet.mp4",
-    poster: "bilder/videos/lmu-biologische-fakultaet.jpg", duration: "2:46", label: "Voice-Over · 2025" },
+    poster: "bilder/videos/lmu-biologische-fakultaet.jpg", duration: "2:46", label: "Voice-Over" },
   { title: "National Geographic",    meta: "Wolves Up Close · Trailer · Voice-Over", youtube: "https://www.youtube.com/watch?v=3hCMUaREGL8",
     note: "Zu hören auf Disney+ (Deutsche Synchronfassung)" },
   { title: "National Geographic",    meta: "Dolphins Up Close · Doku · Voice-Over", youtube: "https://www.youtube.com/watch?v=c-1HF1LiY6o",
