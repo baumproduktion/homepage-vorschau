@@ -4,21 +4,24 @@
 
 // Hörproben: Datei in den Ordner "audio" legen und hier eintragen.
 // tags = Filter-Kategorien (frei wählbar, erscheinen automatisch als Buttons)
+// gain = Lautstärke-Ausgleich in dB (optional), damit alle Hörproben gleich laut klingen.
+//        Gemessen am 11.11.2026, Ziel ca. -12 LUFS: gain = -12 minus gemessener Wert
+//        (bei Anhebung höchstens so viel, dass die Spitze 0 dB nicht überschreitet).
 const DEMOS = [
-  { title: "HD+ Free (FOREAL)",       meta: "Werbung",                file: "audio/hd-plus-free-werbung.mp3",            tags: ["Werbung"] },
-  { title: "Amazon Music (Eleven Audio)", meta: "Werbung",                file: "audio/amazon-music-werbung.mp3",            tags: ["Werbung"] },
-  { title: "Sky Cinema",              meta: "Trailer",                file: "audio/sky-cinema-trailer.mp3",              tags: ["Trailer & Voice-Over"] },
-  { title: "Iperceramica (Just GmbH)", meta: "Werbung",               file: "audio/iperceramica-werbung.mp3",            tags: ["Werbung"] },
-  { title: "Bilgro Getränke",         meta: "Werbung · Gesang & Off", file: "audio/bilgro-getraenke-werbung.mp3",        tags: ["Werbung", "Gesang"] },
-  { title: "Sushi Bike (Radioproduktion)", meta: "Imagespot",              file: "audio/sushi-bike-image.mp3",                tags: ["Werbung"] },
-  { title: "Laserland Dresden",       meta: "Imagespot",              file: "audio/laserland-dresden-image.mp3",         tags: ["Werbung"] },
-  { title: "Sky True Crime",          meta: "Voice-Over",             file: "audio/sky-crime-voice-over.mp3",            tags: ["Trailer & Voice-Over"] },
-  { title: "Opti-Wohnwelt",           meta: "Werbung · Gesang & Off", file: "audio/opti-wohnwelt-gesang-off.mp3",        tags: ["Werbung", "Gesang"] },
-  { title: "Heizungsbau Gottlöber",   meta: "Werbung · Stellenanzeige", file: "audio/heizungsbau-gottloeber-stellenanzeige.mp3", tags: ["Werbung"] },
-  { title: "Hochschulinfotag",        meta: "Werbung",                file: "audio/hochschulinfotag-werbung.mp3",        tags: ["Werbung"] },
-  { title: "Klimahaus Bremerhaven",   meta: "Recruiting-Kampagne",    file: "audio/klimahaus-bremerhaven-recruiting.mp3", tags: ["Werbung"] },
-  { title: "Aktion Mensch",           meta: "Online-Ad",              file: "audio/aktion-mensch-online-ad.mp3",         tags: ["Werbung"] },
-  { title: "Synchron",              meta: "Film & Serie",           file: "audio/synchron.mp3",                        tags: ["Synchron"] },
+  { title: "HD+ Free (FOREAL)",       meta: "Werbung",                file: "audio/hd-plus-free-werbung.mp3",            tags: ["Werbung"], gain: -3.8 },
+  { title: "Amazon Music (Eleven Audio)", meta: "Werbung",                file: "audio/amazon-music-werbung.mp3",            tags: ["Werbung"], gain: -6.3 },
+  { title: "Sky Cinema",              meta: "Trailer",                file: "audio/sky-cinema-trailer.mp3",              tags: ["Trailer & Voice-Over"], gain: -4.7 },
+  { title: "Iperceramica (Just GmbH)", meta: "Werbung",               file: "audio/iperceramica-werbung.mp3",            tags: ["Werbung"], gain: 0.4 },
+  { title: "Bilgro Getränke",         meta: "Werbung · Gesang & Off", file: "audio/bilgro-getraenke-werbung.mp3",        tags: ["Werbung", "Gesang"], gain: -4.4 },
+  { title: "Sushi Bike (Radioproduktion)", meta: "Imagespot",              file: "audio/sushi-bike-image.mp3",                tags: ["Werbung"], gain: -5.7 },
+  { title: "Laserland Dresden",       meta: "Imagespot",              file: "audio/laserland-dresden-image.mp3",         tags: ["Werbung"], gain: -5.9 },
+  { title: "Sky True Crime",          meta: "Voice-Over",             file: "audio/sky-crime-voice-over.mp3",            tags: ["Trailer & Voice-Over"], gain: -1.4 },
+  { title: "Opti-Wohnwelt",           meta: "Werbung · Gesang & Off", file: "audio/opti-wohnwelt-gesang-off.mp3",        tags: ["Werbung", "Gesang"], gain: -6.1 },
+  { title: "Heizungsbau Gottlöber",   meta: "Werbung · Stellenanzeige", file: "audio/heizungsbau-gottloeber-stellenanzeige.mp3", tags: ["Werbung"], gain: -5.5 },
+  { title: "Hochschulinfotag",        meta: "Werbung",                file: "audio/hochschulinfotag-werbung.mp3",        tags: ["Werbung"], gain: -6.8 },
+  { title: "Klimahaus Bremerhaven",   meta: "Recruiting-Kampagne",    file: "audio/klimahaus-bremerhaven-recruiting.mp3", tags: ["Werbung"], gain: -2.8 },
+  { title: "Aktion Mensch",           meta: "Online-Ad",              file: "audio/aktion-mensch-online-ad.mp3",         tags: ["Werbung"], gain: -5.6 },
+  { title: "Synchron",              meta: "Film & Serie",           file: "audio/synchron.mp3",                        tags: ["Synchron"], gain: 3.0 },
 ];
 
 // Videos: bei "youtube" einfach den kompletten YouTube-Link einfügen
@@ -146,6 +149,26 @@ const audio = new Audio();
 audio.preload = "none";
 let current = null; // aktuelles Demo-Objekt
 
+// Lautstärke-Ausgleich: Ton läuft über einen Verstärker (Web Audio), damit auch
+// angehoben werden kann und es auf dem iPhone wirkt (dort wird audio.volume ignoriert).
+let audioCtx = null, gainNode = null;
+function applyGain(db = 0) {
+  const lin = Math.pow(10, db / 20);
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) {
+      try {
+        audioCtx = new AC();
+        gainNode = audioCtx.createGain();
+        audioCtx.createMediaElementSource(audio).connect(gainNode).connect(audioCtx.destination);
+      } catch (e) { audioCtx = null; gainNode = null; }
+    }
+  }
+  if (gainNode) { gainNode.gain.value = lin; audio.volume = 1; }
+  else audio.volume = Math.min(1, lin); // Notlösung ohne Web Audio: nur leiser möglich
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+}
+
 const items = DEMOS.map((d, i) => {
   const li = document.createElement("li");
   li.className = "demo";
@@ -195,6 +218,7 @@ function playItem(item, startRatio) {
   }
   if (current) { current.li.classList.remove("is-playing"); current.progress = 0; drawWave(current.canvas, current.peaks, 0); current.time.textContent = fmt(current.duration); }
   current = item;
+  applyGain(item.gain);
   audio.src = item.file;
   if (startRatio) audio.addEventListener("loadedmetadata", () => { audio.currentTime = startRatio * audio.duration; }, { once: true });
   audio.play().catch(() => {});
@@ -205,6 +229,7 @@ function playItem(item, startRatio) {
 const mini = $("#mini"), miniBtn = $("#miniBtn"), miniProg = $("#miniProg"), miniTime = $("#miniTime");
 
 audio.addEventListener("play", () => {
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
   current.li.classList.add("is-playing");
   $(".demo__play", current.li).setAttribute("aria-label", `${current.title} pausieren`);
   mini.classList.remove("is-paused"); miniBtn.setAttribute("aria-label", "Pause");
