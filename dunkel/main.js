@@ -21,7 +21,6 @@ const DEMOS = [
   { title: "Heizungsbau Gottlöber",   meta: "Werbung · Stellenanzeige", file: "audio/heizungsbau-gottloeber-stellenanzeige.mp3", tags: ["Werbung"], gain: -5.5 },
   { title: "Hochschulinfotag",        meta: "Werbung",                file: "audio/hochschulinfotag-werbung.mp3",        tags: ["Werbung"], gain: -6.8 },
   { title: "Klimahaus Bremerhaven",   meta: "Recruiting-Kampagne",    file: "audio/klimahaus-bremerhaven-recruiting.mp3", tags: ["Werbung"], gain: -2.8 },
-  { title: "Aktion Mensch",           meta: "Online-Ad",              file: "audio/aktion-mensch-online-ad.mp3",         tags: ["Werbung"], gain: -5.6 },
   { title: "Synchron",              meta: "Film & Serie",           file: "audio/synchron.mp3",                        tags: ["Synchron"], gain: 3.0 },
 ];
 
