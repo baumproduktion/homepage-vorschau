@@ -52,7 +52,7 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css?v=4">
-<link rel="stylesheet" href="style.css?v=113">
+<link rel="stylesheet" href="style.css?v=114">
 <script>/* Farbvorschau: ?akzent=RRGGBB testet eine andere Akzentfarbe (ohne Zusatz bleibt alles wie es ist) */(function(){var m=location.search.match(/[?&]akzent=([0-9a-fA-F]{6})/);if(!m)return;var h=m[1],r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16),s=document.documentElement.style;s.setProperty("--accent","#"+h);s.setProperty("--accent-ink",(0.299*r+0.587*g+0.114*b)>165?"#111111":"#FFFFFF");})();</script>
 <link rel="icon" href="bilder/logo/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="bilder/logo/favicon-32.png">
@@ -199,6 +199,24 @@
       <div class="video-pro__text">
         <p class="video-pro__lead">Heute vereint Tobias all diese Facetten in seiner Selbstständigkeit und bringt Geschichten nicht mehr nur zum Klingen, sondern auch visuell auf den Punkt.</p>
         <p>Ob vor oder hinter der Kamera: Als erfahrener <strong>Schauspieler</strong> und <strong>Videoproduzent</strong> konzipiert und realisiert er packenden Video-Content, unter anderem im <strong>Social-Media-Bereich</strong> für verschiedenste Unternehmen. Mit jahrelanger Erfahrung und einem feinen Gespür für die Anliegen seiner Kunden arbeitet er dabei Hand in Hand mit einem eingespielten Netzwerk aus Freelancern – darunter <a href="https://frickefilm.de" target="_blank" rel="noopener">Frickefilm</a> und <a href="https://einfachzack.de" target="_blank" rel="noopener">Einfach Zack</a>.</p>
+        <!-- Stilisierte Schnitt-Timeline (rein dekorativ) + Arbeitsschritte -->
+        <div class="edit-tl" aria-hidden="true">
+          <div class="edit-tl__bar"><span><i></i>Schnitt</span><span>Projekt_final_v3 · 25p</span></div>
+          <div class="edit-tl__body">
+            <div class="edit-tl__ruler"><span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span><span>00:25</span><span>00:30</span></div>
+            <div class="trk"><b>V2</b><div class="lane"><i class="c c--gfx" style="--s:6%;--w:20%">Titel</i><i class="c c--gfx" style="--s:70%;--w:18%">Logo</i></div></div>
+            <div class="trk"><b>V1</b><div class="lane"><i class="c c--vid" style="--s:0%;--w:29%">Dreh</i><i class="c c--vid" style="--s:30%;--w:21%">Interview</i><i class="c c--vid" style="--s:52%;--w:25%">B-Roll</i><i class="c c--vid" style="--s:78%;--w:22%">Outro</i></div></div>
+            <div class="trk"><b>A1</b><div class="lane"><i class="c c--vo" style="--s:4%;--w:60%">Voice-Over</i></div></div>
+            <div class="trk"><b>A2</b><div class="lane"><i class="c c--mus" style="--s:0%;--w:100%">Musik</i></div></div>
+            <span class="edit-tl__head"></span>
+          </div>
+        </div>
+        <ol class="edit-steps">
+          <li><span>01</span>Konzept</li>
+          <li><span>02</span>Dreh</li>
+          <li><span>03</span>Schnitt</li>
+          <li><span>04</span>Stimme &amp; Musik</li>
+        </ol>
       </div>
         <!-- Einfach-Zack-Clip als eigene MP4 (seit 10.11. statt Instagram-Link); wird erst beim Klick geladen -->
         <figure class="video reel">
