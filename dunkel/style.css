@@ -228,7 +228,7 @@ em { font-style: normal; color: var(--accent); }
 .stats dt { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 4.5vw, 60px); line-height: 1; color: var(--accent); }
 .stats dd { margin: 8px 0 0; font-size: 14px; color: rgba(244,241,234,.75); }
 .music .video-grid--dark .video__meta { color: var(--muted); }
-#bandGrid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+#bandGrid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 
 /* ---------- Videoproduktion ---------- */
 /* Filmlook: dunkler Kinosaal, Klappen-Streifen, REC + Timecode, Sucher-Ecken */
