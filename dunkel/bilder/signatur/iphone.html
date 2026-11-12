@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>iPhone-Signatur</title>
+<style>
+  body { margin: 0; padding: 20px 16px 48px; background: #f4f4f2; color: #222; font-family: Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  h2 { font-size: 16px; margin: 30px 0 8px; }
+  ol { padding-left: 20px; margin: 8px 0 0; }
+  li { margin-bottom: 6px; }
+  .tipp { background: #fff3ec; border-left: 3px solid #FF6A2B; padding: 10px 12px; margin-top: 14px; font-size: 14px; }
+  .box { background: #fff; border: 1px solid #e2e0db; border-radius: 10px; padding: 18px 16px; }
+  button { margin-top: 10px; width: 100%; padding: 13px; font-size: 16px; font-weight: bold; color: #fff; background: #FF6A2B; border: 0; border-radius: 10px; }
+  .ok { display: none; text-align: center; font-size: 14px; color: #2a7a2a; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Signatur fürs iPhone</h1>
+  <p style="margin:0;color:#555">Ohne Tabellen gebaut – verrutscht nicht im iOS-Editor.</p>
+
+  <ol>
+    <li>Diese Seite <b>auf dem iPhone in Safari</b> öffnen.</li>
+    <li>Unter der gewünschten Version auf <b>„Signatur kopieren“</b> tippen.<br><span style="color:#777;font-size:14px">(Klappt das nicht: Text lange antippen, bis „tobiasbaum.com“ markieren, „Kopieren“.)</span></li>
+    <li><b>Einstellungen → Apps → Mail → Signatur</b> öffnen, alten Text löschen, lange tippen → <b>Einsetzen</b>.</li>
+    <li>Zurück tippen – fertig. Am besten eine Test-Mail an dich selbst schicken.</li>
+  </ol>
+
+  <div class="tipp"><b>Farben sind beim Einsetzen weg?</b> Direkt danach das iPhone einmal <b>schütteln</b> und „Widerrufen“ / „Attribute ändern widerrufen“ wählen – dann kommen Fett und Orange zurück. Hilft das nicht, nimm die reine Textversion unten.</div>
+
+  <h2>A · Farbig (vereinfacht)</h2>
+  <div class="box">
+    <div id="sig-farbig" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #222222;"><b style="font-size: 16px; color: #111111;">Tobias Baum</b><b style="font-size: 16px; color: #FF6A2B;">.</b><br><span style="color: #555555;">Video. Musik. </span><b style="color: #FF6A2B;">Stimme.</b><br><br><a href="tel:+491778297321" style="color: #222222; text-decoration: none;">+49 177 8297321</a><span style="color: #FF6A2B;">&nbsp;·&nbsp;</span><a href="https://tobiasbaum.com" style="color: #FF6A2B; text-decoration: none; font-weight: bold;">tobiasbaum.com</a></div>
+  </div>
+  <button type="button" data-ziel="sig-farbig">Signatur kopieren</button>
+  <div class="ok" id="ok-sig-farbig">Kopiert – jetzt in Mail → Signatur einsetzen.</div>
+
+  <h2>B · Nur Text (100 % sicher)</h2>
+  <div class="box">
+    <div id="sig-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;">Tobias Baum<br>Video. Musik. Stimme.<br><br>+49 177 8297321 · tobiasbaum.com</div>
+  </div>
+  <button type="button" data-ziel="sig-text">Signatur kopieren</button>
+  <div class="ok" id="ok-sig-text">Kopiert – jetzt in Mail → Signatur einsetzen.</div>
+</div>
+
+<script>
+document.querySelectorAll('button[data-ziel]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var id = btn.getAttribute('data-ziel');
+    var el = document.getElementById(id);
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    if (id === 'sig-text') { sel.removeAllRanges(); }
+    // Bei der farbigen Version bleibt die Markierung stehen, falls man doch per Hand "Kopieren" tippen muss
+    if (ok) { document.getElementById('ok-' + id).style.display = 'block'; }
+  });
+});
+</script>
+</body>
+</html>
