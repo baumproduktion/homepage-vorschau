@@ -52,7 +52,7 @@
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css?v=4">
-<link rel="stylesheet" href="style.css?v=115">
+<link rel="stylesheet" href="style.css?v=116">
 <script>/* Farbvorschau: ?akzent=RRGGBB testet eine andere Akzentfarbe (ohne Zusatz bleibt alles wie es ist) */(function(){var m=location.search.match(/[?&]akzent=([0-9a-fA-F]{6})/);if(!m)return;var h=m[1],r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16),s=document.documentElement.style;s.setProperty("--accent","#"+h);s.setProperty("--accent-ink",(0.299*r+0.587*g+0.114*b)>165?"#111111":"#FFFFFF");})();</script>
 <link rel="icon" href="bilder/logo/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="bilder/logo/favicon-32.png">
@@ -265,7 +265,13 @@
         </blockquote>
       </div>
       <div class="contact__links">
-        <a href="mailto:studio@tobiasbaum.com" class="btn btn--primary btn--big">studio@tobiasbaum.com</a>
+        <div class="contact__mail">
+          <a href="mailto:studio@tobiasbaum.com" class="btn btn--primary btn--big">studio@tobiasbaum.com</a>
+          <button type="button" class="btn btn--ghost btn--big contact__copy" data-copy="studio@tobiasbaum.com" aria-label="E-Mail-Adresse kopieren">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>
+            <span aria-live="polite">Kopieren</span>
+          </button>
+        </div>
         <p class="contact__phone">oder ruf einfach an: <a href="tel:+491778297321">+49&nbsp;177&nbsp;8297321</a></p>
         <p class="contact__phone contact__social">
           <a href="https://www.instagram.com/tobiasbaum82/" target="_blank" rel="noopener">
@@ -302,6 +308,6 @@
   <div class="mini__bar"><span id="miniProg"></span></div>
 </div>
 
-<script src="main.js?v=115"></script>
+<script src="main.js?v=116"></script>
 </body>
 </html>

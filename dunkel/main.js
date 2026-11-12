@@ -400,3 +400,27 @@ document.querySelectorAll("[data-local-video]").forEach((btn) => {
     v.play().catch(() => {});
   });
 });
+
+/* ---------- E-Mail-Adresse kopieren (Knopf im Kontaktbereich) ---------- */
+document.querySelectorAll("[data-copy]").forEach((btn) => {
+  const label = btn.querySelector("span");
+  btn.addEventListener("click", async () => {
+    const text = btn.dataset.copy;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(text);
+      ok = true;
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand("copy"); } catch {}
+      ta.remove();
+    }
+    label.textContent = ok ? "Kopiert ✓" : "Bitte markieren";
+    btn.classList.toggle("is-copied", ok);
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => { label.textContent = "Kopieren"; btn.classList.remove("is-copied"); }, 2200);
+  });
+});

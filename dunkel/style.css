@@ -422,6 +422,12 @@ em { font-style: normal; color: var(--accent); }
 .contact__quote strong { color: var(--ink); }
 .contact .btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .contact__social a:hover { color: var(--accent); }
+/* „Kopieren“-Knopf neben der E-Mail-Adresse */
+.contact__mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.contact__copy { background: transparent; border-color: rgba(241,239,234,.32); color: var(--ink); padding: 0 26px; }
+.contact__copy svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.contact__copy:hover { background: rgba(241,239,234,.08); color: var(--ink); border-color: rgba(241,239,234,.6); }
+.contact__copy.is-copied, .contact__copy.is-copied:hover { border-color: var(--accent); color: var(--accent); }
 /* Mini-Player unten */
 .mini { background: rgba(18, 24, 40, .92); color: var(--ink); border: 1px solid var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 16px 40px rgba(0,0,0,.5); }
 .mini__close:hover { color: var(--ink); }
