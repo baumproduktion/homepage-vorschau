@@ -62,7 +62,7 @@ const COMMERCIAL_VIDEOS = [
 const BAND_VIDEOS = [
   { title: "Hoffnung",               meta: "EINSHOCH6 · Live",            youtube: "https://www.youtube.com/watch?v=rsvSo3lRwCA", poster: "bilder/videos/rsvSo3lRwCA-thumbnail.jpg" },
   { title: "Solang die Erde sich dreht", meta: "EINSHOCH6 · Bandtagebuch (DW)", youtube: "https://www.youtube.com/watch?v=ZhyiKUAW2bA" },
-  { title: "Die Stadt springt Tour", meta: "EINSHOCH6 · Live",            youtube: "https://www.youtube.com/watch?v=RmuirsIySFM" },
+  { title: "Die Stadt springt Tour", meta: "EINSHOCH6 · Live",            youtube: "https://www.youtube.com/watch?v=RmuirsIySFM", poster: "bilder/videos/RmuirsIySFM-thumbnail.jpg" },
 ];
 
 const CLIENTS = [
