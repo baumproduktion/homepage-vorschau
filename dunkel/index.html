@@ -25,27 +25,68 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Tobias Baum",
-  "url": "https://tobiasbaum.com/",
-  "image": "https://tobiasbaum.com/bilder/teilen-vorschau.jpg",
-  "jobTitle": "Sprecher, Musik- und Videoproduzent",
-  "description": "Sprecher für Werbung, Trailer, Voice-Over und Synchron sowie Produzent für Musik, Werbung und Video.",
-  "email": "mailto:studio@tobiasbaum.com",
-  "telephone": "+491778297321",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Ringstraße 33",
-    "postalCode": "82386",
-    "addressLocality": "Huglfing",
-    "addressRegion": "Bayern",
-    "addressCountry": "DE"
-  },
-  "areaServed": ["München", "Bayern", "Deutschland"],
-  "knowsAbout": ["Sprecher", "Voice-Over", "Werbesprecher", "Trailer", "Synchron", "Erklärvideos", "Imagefilme", "Dokumentationen", "Eventfilme", "E-Learning", "Hörbücher", "Podcasts", "Telefonansagen", "Games", "Apps", "Musikproduktion", "Werbeproduktion", "Videoproduktion"],
-  "sameAs": [
-    "https://www.instagram.com/tobiasbaum82/",
-    "https://www.facebook.com/tobias.baum"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://tobiasbaum.com/#person",
+      "name": "Tobias Baum",
+      "url": "https://tobiasbaum.com/",
+      "image": "https://tobiasbaum.com/bilder/teilen-vorschau.jpg",
+      "jobTitle": "Sprecher, Musik- und Videoproduzent",
+      "description": "Sprecher für Werbung, Trailer, Voice-Over und Synchron sowie Produzent für Musik, Werbung und Video.",
+      "email": "mailto:studio@tobiasbaum.com",
+      "telephone": "+491778297321",
+      "address": { "@id": "https://tobiasbaum.com/#adresse" },
+      "worksFor": { "@id": "https://tobiasbaum.com/#studio" },
+      "knowsAbout": ["Sprecher", "Voice-Over", "Werbesprecher", "Trailer", "Synchron", "Erklärvideos", "Imagefilme", "Dokumentationen", "Eventfilme", "E-Learning", "Hörbücher", "Podcasts", "Telefonansagen", "Games", "Apps", "Musikproduktion", "Werbeproduktion", "Videoproduktion"],
+      "sameAs": [
+        "https://www.instagram.com/tobiasbaum82/",
+        "https://www.facebook.com/tobias.baum"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tobiasbaum.com/#studio",
+      "name": "Tobias Baum",
+      "description": "Tonstudio und Sprecher aus dem Raum München: Sprachaufnahmen für Werbung, Trailer, Voice-Over, Synchron, E-Learning und Telefonansagen, dazu Musik-, Werbe- und Videoproduktion aus einer Hand. Aufnahme im eigenen Studio oder per Remote-Regie.",
+      "url": "https://tobiasbaum.com/",
+      "logo": "https://tobiasbaum.com/bilder/logo/apple-touch-icon.png",
+      "image": "https://tobiasbaum.com/bilder/dreh/start-set-retusche.jpg",
+      "telephone": "+491778297321",
+      "email": "mailto:studio@tobiasbaum.com",
+      "address": {
+        "@type": "PostalAddress",
+        "@id": "https://tobiasbaum.com/#adresse",
+        "streetAddress": "Ringstraße 33",
+        "postalCode": "82386",
+        "addressLocality": "Huglfing",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "München" },
+        { "@type": "AdministrativeArea", "name": "Landkreis Weilheim-Schongau" },
+        { "@type": "State", "name": "Bayern" },
+        { "@type": "Country", "name": "Deutschland" }
+      ],
+      "founder": { "@id": "https://tobiasbaum.com/#person" },
+      "knowsLanguage": "de",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Leistungen",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sprecher für Werbung, Trailer, Voice-Over und Synchron" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sprachaufnahmen im Tonstudio und per Remote-Regie" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Musikproduktion, Jingles und Soundlogos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Werbeproduktion für Radio, TV und Online" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Videoproduktion: Imagefilme, Werbespots, Eventfilme, Social-Media-Clips" } }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/tobiasbaum82/",
+        "https://www.facebook.com/tobias.baum"
+      ]
+    }
   ]
 }
 </script>
